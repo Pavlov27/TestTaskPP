@@ -33,7 +33,6 @@ class CustomCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        //hide or reset anything you want hereafter, for example
         self.backgroundColor = .none
     }
     
@@ -41,4 +40,24 @@ class CustomCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+}
+
+class Animation {
+    static func viewSlideInFromTopToBottom(view: UIView) -> Void {
+        let transition:CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromBottom
+        view.layer.add(transition, forKey: kCATransition)
+    }
+
+    static func viewSlideOutFromBottomToTop(view: UIView) -> Void {
+        let transition:CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromTop
+        view.layer.add(transition, forKey: kCATransition)
+    }
 }
