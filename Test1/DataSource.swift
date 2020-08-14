@@ -24,13 +24,13 @@ class DataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CustomCell {
 
-            cell.cellLabel.text = "\(ModelView.displayedNumbers[indexPath.row])"
-            return cell
-            } else {
-                let emptycell = UICollectionViewCell()
-                return emptycell
-            }
+        cell.cellLabel.text = "\(ModelView.displayedNumbers[indexPath.row])"
+        return cell
+        } else {
+            let emptycell = UICollectionViewCell()
+            return emptycell
         }
+    }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? CustomCell else { return }
